@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador</title>
+    <link rel="stylesheet" href="css/styleSimulador.css">
+
+</head>
+
+<body>
+    <!-- -- CABEÇALHO -- -->
+    <div class="header">
+        <div class="logo">
+            <a href="C:\Users\julia\Desktop\Projeto-individual-S3\index.html"><img src="imagens/logo.png"
+                    alt="Logo do site"></a>
+        </div>
+        <div>
+            <ul>
+                <li><a href="C:\Users\julia\Desktop\Projeto-individual-S3\index.html">Inicial</a></li>
+                <li><a href="#">Chácara Gouveia</a></li>
+                <li><a href="#">Saúde e Bem-Estar</a></li>
+                <li><a href="#">Depoimentos</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li> <a href="C:\Users\julia\Desktop\Projeto-individual-S3\simulador.html">
+                        <button>FAÇA A SIMULAÇÃO DE SUA HORTA</button></li></a>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- -- FORMULARIO USUARIO -- -->
+    <div class="quadrado">
+
+        <div class="formulario">
+            <h1>Bem-vindo ao Simulador de Plantio e Colheita</h1>
+            <p>Este simulador permite que você planeje e simule o cultivo de diferentes plantas em sua própria horta.
+                Cultivar seus próprios alimentos não só é uma atividade gratificante, mas também uma maneira sustentável
+                de
+                se alimentar e cuidar do meio ambiente. Experimente e comece sua jornada na jardinagem hoje mesmo!</p>
+            <p>Antes de começar, por favor, nos informe um pouco sobre você:</p>
+        </div>
+
+        <div class="formulario">
+
+            <form class="formularioUsuario">
+                Nome:<input type="text" id="input_nome">
+                Email:<input type="email" id="input_email">
+                Idade:<input type="number" id="input_idade">
+
+                Qual é sua frequência de contato com a natureza?
+                <select id="select_contato_natureza">
+                    <option value="#">Selecione uma opção</option>
+                    <option value="diariamente">Diariamente</option>
+                    <option value="semanalmente">Semanalmente</option>
+                    <option value="mensalmete">Mensalmente</option>
+                    <option value="raramente">Raramente</option>
+                </select>
+
+                Qual é o seu nível de estresse?
+                <select id="select_nivel_estresse">
+                    <option value="#">Selecione uma opção</option>
+                    <option value="baixo">Baixo</option>
+                    <option value="medio">Médio</option>
+                    <option value="alto">Alto</option>
+                    <option value="muitoalto">Muito Alto</option>
+                </select>
+
+                Como você se sente quando está em áreas verdes?
+                <select id="select_sentimento_verde">
+                    <option value="#">Selecione uma opção</option>
+                    <option value="muitobem">Muito Bem</option>
+                    <option value=bem">Bem</option>
+                    <option value="neutro">Neutro</option>
+                    <option value="desconfortavel">Desconfortável</option>
+                </select>
+
+                <button onclick="iniciarSimulacao()">Iniciar Simulação</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function iniciarSimulacao() {
+
+        var nome = input_nome.value;
+        var email = input_email.value;
+        var idade = input_idade.value;
+
+        var contato_natureza = select_contato_natureza.value;
+        var nivel_estresse = select_nivel_estresse.value;
+        var sentimento_emverde = select_sentimento_verde.value;
+
+        if (nome == "" || email == "" || idade == "" || contato_natureza == "#" || nivel_estresse == "#" || sentimento_emverde == "#"){
+            alert("Preencha os Campos Corretamente!");
+        } else{
+            // C:\Users\julia\Desktop\Projeto-individual-S3\simulador.html
+        }
+    }
+
+</script>
