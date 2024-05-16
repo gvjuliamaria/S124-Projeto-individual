@@ -4,156 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 
-    <title>Projeto Individual</title>
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Raleway", sans-serif;
-            background-color: black;
-        }
-
-        :root {
-            --tamanho-header: 80px;
-            --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-            --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-            --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-            --tamanho-footer: 65px;
-        }
-
-        .container {
-            display: flex;
-            width: 95%;
-            margin: auto;
-        }
-
-        .header {
-            /* height: var(--tamanho-header); */
-            height: 100px;
-            background-color: #393939;
-        }
-
-        .header .container {
-            justify-content: space-between;
-            align-items: center;
-            height: 100%;
-        }
-
-        .header a {
-            text-decoration: none;
-            color: white;
-        }
-
-        .agora {
-            font-weight: 800;
-            color: #F98016;
-        }
-
-        .navbar {
-            width: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            list-style: none;
-            color: white;
-        }
-
-        .titulo {
-            color: white;
-            width: fit-content;
-            font-weight: 500;
-        }
-
-        .header h1 {
-            margin: 0;
-            padding-left: 10px;
-        }
-
-        .logo {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
-
-        /* BANNER */
-        .banner {
-            height: var(--tamanho-banner);
-            color: white;
-            background-image: url('capasitio.jpg');
-            background-size: cover;
-            height: 85vh
-        }
-
-        .banner .container {
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            text-align: center;
-        }
-
-        .banner .container p {
-            width: auto;
-            margin: 0;
-            padding: 0;
-            font-size: 50px;
-        }
-
-        .banner .container span {
-            font-weight: 800;
-        }
-
-        .subtitulo {
-            font-family: "Cormorant", serif;
-            font-size: 20px;
-            padding: 100px;
-        }
-    </style>
 </head>
 
+<style>
+   
+</style>
+
 <body>
+
+    <!-- -- CABEÇALHO -- -->
     <div class="header">
-        <div class="container">
-            <div class="logo">
-                <img src="icone.svg"" style=" width: 50px;;">
-                <h1 class=" titulo"> Projeto individual</h1>
-            </div>
-            <ul class="navbar">
-                <li>
-                    <a href="#" class="agora">Inicial</a>
-                </li>
-                <li>
-                    <a href="">Chácara Gouveia</a>
-                </li>
-                <li>
-                    <a href="">Saúde e Bem-Estar</a>
-                </li>
-                <li>
-                    <a href="">Depoimentos</a>
-                </li>
+        <div class="logo">
+            <img src="imagens/logo.png" alt="Logo do site">
+        </div>
+        <div class="nav-bar-links">
+            <ul>
+                <li class="agora"><a href="#">Inicial</a></li>
+                <li><a href="#">Chácara Gouveia</a></li>
+                <li><a href="#">Saúde e Bem-Estar</a></li>
+                <li><a href="#">Depoimentos</a></li>
+            </ul>
+        </div>
+        <div class="nav-bar-login">
+            <ul>
+                <li><a href="#">Login</a></li>
+                <li>|</li>
+                <li><a href="#">Cadastro</a></li>
             </ul>
         </div>
     </div>
 
-    <div class="banner">
-        <div class="container">
-            <div>
-                <p class="subtitulo">Um refúgio na Natureza</p>
-                <p>Chácara Gouveia</p>
-            </div>
-        </div>
-    </div>
-
+    <!-- -- BANNER -- -->
+    <div class="banner"> </div>
 </body>
 
 </html>
