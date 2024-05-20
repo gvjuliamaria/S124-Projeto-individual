@@ -5,8 +5,7 @@ body {
     background-color: #F9F9F9;
 }
 
-
-/* -- ---- HEADER ---- -- */
+/* -- ---- CSS HEADER ---- -- */
 .header {
     background-color: #F9F9F9;
     display: flex;
@@ -15,7 +14,6 @@ body {
     padding: 10px 20px;
     height: 80px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
 }
 
 .header button {
@@ -33,7 +31,6 @@ body {
 .header button:hover {
     background-color: #FF6C00;
 }
-
 
 .logo img {
     width: 200px;
@@ -64,64 +61,35 @@ body {
     font-weight: bold;
 }
 
-
-
-/* FORMULARIO IDENTIFICAÇÃO */
+/* Estilos para o conteúdo da página */
 .quadrado {
-    padding-top: 10px;
-    display: flex;
-    justify-content: center;
-}
-
-.formulario {
+    width: 70%;
+    margin: 20px auto;
     background-color: #fff;
-    border-radius: 10px;
-    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); */
     padding: 20px;
-    width: 25%;
-    margin: 10px; 
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.formulario h1 {
-    font-size: 24px;
-    color: #333;
-}
-
-.formulario p {
-    font-size: 16px;
-    color: #666;
-}
-
-.formularioUsuario {
+.quadrado2{
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
-
-input,
-select {
-    padding: 10px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
+.quadrado2 img{
+    width: 350px;
+    box-shadow: 0 4px 8px rgba(9, 72, 11, 0.697);
+}
+.legenda{
+    font-size: 12px;
 }
 
-button {
-    background-color: #ff8926;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
+.quadrado h1 {
+    color: #FF8926;
 }
 
-button:hover {
-    background-color: #ff6c00;
-}
-
-.titulo{
-    text-align: center;
-    padding-top: 20px;
+.texto p {
+    color: #2C2D2D;
+    line-height: 1.6;
 }

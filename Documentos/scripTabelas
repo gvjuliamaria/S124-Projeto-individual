@@ -1,0 +1,34 @@
+CREATE DATABASE chacaraGouveia;
+USE chacaraGouveia;
+
+CREATE TABLE `usuario` (
+  `idUsuario` INT NOT NULL,
+  `nome` VARCHAR(200) NULL,
+  `email` VARCHAR(100) NULL,
+  `idade` INT NULL,
+  `freqContNatureza` VARCHAR(45) NULL,
+  `nivelEstresse` VARCHAR(45) NULL,
+  `sentimentoAreasVerdes` VARCHAR(45) NULL,
+  PRIMARY KEY (`idUsuario`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`simulacao`
+-- -----------------------------------------------------
+CREATE TABLE `simulacao` (
+  `idSimulacao` INT NOT NULL,
+  `planta` VARCHAR(45) NULL,
+  `meses` VARCHAR(45) NULL,
+  `fkUsuario` INT NOT NULL,
+  PRIMARY KEY (`idSimulacao`, `fkUsuario`),
+  INDEX `fk_simulacao_usuario_idx` (`fkUsuario` ASC) VISIBLE,
+  CONSTRAINT `fk_simulacao_usuario`
+    FOREIGN KEY (`fkUsuario`)
+    REFERENCES `mydb`.`usuario` (`idUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+SELECT * FROM usuario;
+SELECT * FROM simulacao;

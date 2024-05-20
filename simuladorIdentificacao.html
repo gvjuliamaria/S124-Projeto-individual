@@ -18,15 +18,14 @@
         </div>
         <div>
             <ul>
-                <li><a href="C:\Users\julia\Desktop\Projeto-individual-S3\index.html">Inicial</a></li>
-                <li><a href="#">Chácara Gouveia</a></li>
+                <li><a href="index.html">Inicial</a></li>
+                <li><a href="chacaragouveia.html">Chácara Gouveia</a></li>
                 <li><a href="#">Saúde e Bem-Estar</a></li>
-                <li><a href="#">Depoimentos</a></li>
             </ul>
         </div>
         <div>
             <ul>
-                <li> <a href="C:\Users\julia\Desktop\Projeto-individual-S3\simulador.html">
+                <li> <a href="simulador.html">
                         <button>FAÇA A SIMULAÇÃO DE SUA HORTA</button></li></a>
             </ul>
         </div>
@@ -91,6 +90,7 @@
 <script>
     function iniciarSimulacao() {
 
+
         var nome = input_nome.value;
         var email = input_email.value;
         var idade = input_idade.value;
@@ -99,10 +99,16 @@
         var nivel_estresse = select_nivel_estresse.value;
         var sentimento_emverde = select_sentimento_verde.value;
 
-        if (nome == "" || email == "" || idade == "" || contato_natureza == "#" || nivel_estresse == "#" || sentimento_emverde == "#"){
+
+
+        if (nome == "" || email == "" || idade == "" || contato_natureza == "#" || nivel_estresse == "#" || sentimento_emverde == "#") {
             alert("Preencha os Campos Corretamente!");
-        } else{
-            // C:\Users\julia\Desktop\Projeto-individual-S3\simulador.html
+        } else {
+
+            setTimeout(function () {
+                window.Location("./simulador.html");
+            },1000);
+
         }
     }
 

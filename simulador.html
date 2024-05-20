@@ -18,15 +18,14 @@
         </div>
         <div>
             <ul>
-                <li><a href="C:\Users\julia\Desktop\Projeto-individual-S3\index.html">Inicial</a></li>
-                <li><a href="#">Chácara Gouveia</a></li>
+                <li><a href="index.html">Inicial</a></li>
+                <li><a href="chacaragouveia.html">Chácara Gouveia</a></li>
                 <li><a href="#">Saúde e Bem-Estar</a></li>
-                <li><a href="#">Depoimentos</a></li>
             </ul>
         </div>
         <div>
             <ul>
-                <li> <a href="C:\Users\julia\Desktop\Projeto-individual-S3\simulador.html">
+                <li> <a href="simuladorIdentificacao.html">
                         <button>FAÇA A SIMULAÇÃO DE SUA HORTA</button></li></a>
             </ul>
         </div>
@@ -58,9 +57,9 @@
         </div>
 
         <div class="formulario">
-            <div class="div_resultado">
+            <div>
                 <h2>Resultado Simulação</h2>
-                <p class="p_resultado"></p>
+                <p id="p_resultado"></p>
             </div>
         </div>
     </div>
@@ -99,9 +98,9 @@
 
                         crescimento = taxaCrescimento * tempo;
 
-                        // p_resultado.innerHTML =
-                        //     `<p>A Hortaliça ${planta} foi simulada por um período de ${tempo} meses.</p>` +
-                        //     `<p>Neste período, você terá terá lindas unidades por volta de ${crescimento} cm.</p>`;
+                        p_resultado.innerHTML +=
+                            `<p>A Hortaliça ${planta} foi simulada por um período de ${tempo} meses.</p>` +
+                            `<p>Neste período, você terá terá lindas unidades por volta de ${crescimento} cm.</p>`;
 
                         alert(`A Hortaliça ${planta} foi simulada por um período de ${tempo} meses. Neste período, você terá terá lindas unidades por volta de ${crescimento} cm`)
 
