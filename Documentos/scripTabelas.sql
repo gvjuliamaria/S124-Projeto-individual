@@ -1,4 +1,4 @@
-DROP DATABASE chacaraGouveia;
+-- DROP DATABASE chacaraGouveia;
 
 CREATE DATABASE chacaraGouveia;
 USE chacaraGouveia;
@@ -12,6 +12,15 @@ CREATE TABLE usuario (
   nivelEstresse VARCHAR(45),
   sentimento VARCHAR(45)
   );
+  
+ALTER TABLE usuario ADD CONSTRAINT chkfrequenciaContato 
+CHECK (frequenciaContato IN('diariamente','semanalmente','mensalmente','raramente'));
+
+ALTER TABLE usuario ADD CONSTRAINT chknivelEstresse
+CHECK (nivelEstresse IN('baixo','medio','alto','muitoalto'));
+
+ALTER TABLE usuario ADD CONSTRAINT chksentimento 
+CHECK (sentimento IN('muitobem','bem','neutro','desconfortavel'));
 
 CREATE TABLE simulacao (
   idSimulacao INT AUTO_INCREMENT,
