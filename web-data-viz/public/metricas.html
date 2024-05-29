@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métricas dos Usuários</title>
+    <link rel="stylesheet" href="css/styleMetricas.css">
+    <!-- Incluir a biblioteca Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body onload="obterDadosGrafico()">
+    <div class="header">
+        <div class="logo">
+            <a href="C:\Users\julia\Desktop\Projeto-individual-S3\index.html"><img src="assets/imgs/logo.png"
+                    alt="Logo do site"></a>
+        </div>
+
+        <div>
+            <h2>Métricas dos Usuários</h2>
+        </div>
+
+        <div>
+            <ul>
+                <li><a href="index.html"><button>Voltar a Página Inicial</button></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Gráfico de idade dos usuários
+        <div class="chart">
+            <canvas id="idadeChart"></canvas>
+        </div> -->
+
+        <!-- Gráfico de nível de estresse dos usuários -->
+        <!-- <div class="chart">
+            <canvas id="nivelEstresseChart"></canvas>
+        </div> -->
+
+        <!-- Gráfico de sentimentos dos usuários em áreas verdes -->
+        <!-- <div class="chart">
+            <canvas id="sentimentoChart"></canvas>
+        </div> -->
+
+        <!-- Gráfico das plantas mais selecionadas para a horta -->
+        <div class="chart">
+            <canvas id="teste"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Gráfico de idade dos usuários
+        // const ctx1 = document.getElementById('idadeChart').getContext('2d');
+        // var idadeChart = new Chart(ctx1, {
+        //     type: 'bar',
+        //     data: {
+        //         labels: ['18-25', '26-35', '36-45', '46-55', '56+'],
+        //         datasets: [{
+        //             label: 'Idade dos Usuários',
+        //             data: [20, 35, 40, 30, 25],
+        //             backgroundColor: 'rgba(46, 92, 41, 0.7)',
+        //             borderColor: '#2E5C29',
+        //             borderWidth: 1
+        //         }]
+        //     },
+        //     options: {
+        //         scales: {
+        //             y: {
+        //                 beginAtZero: true
+        //             }
+        //         }
+        //     }
+        // });
+
+        // // Gráfico de Nível de estresse
+        // const ctx2 = document.getElementById('nivelEstresseChart').getContext('2d');
+        // var nivelEstresseChart = new Chart(ctx2, {
+        //     type: 'bar',
+        //     data: {
+        //         labels: ['Baixo', 'Médio', 'Alto', 'Muito Alto'],
+        //         datasets: [{
+        //             label: 'Nível de Estresse dos Usuários',
+        //             data: [30, 50, 20, 42],
+        //             backgroundColor: 'rgba(46, 92, 41, 0.7)',
+        //             borderColor: '#2E5C29',
+        //             borderWidth: 1
+        //         }]
+        //     },
+        //     options: {
+        //         scales: {
+        //             y: {
+        //                 beginAtZero: true
+        //             }
+        //         }
+        //     }
+        // });
+
+        // // Gráfico de sentimentos dos usuários em áreas verdes
+        // const ctx3 = document.getElementById('sentimentoChart').getContext('2d');
+        // var sentimentoChart = new Chart(ctx3, {
+        //     type: 'bar',
+        //     data: {
+        //         labels: ['Muito Bem', 'Bem', 'Neutro', 'Desconfortável'],
+        //         datasets: [{
+        //             label: 'Sentimentos dos Usuários em Áreas Verdes',
+        //             data: [50, 40, 30, 20],
+        //             backgroundColor: 'rgba(46, 92, 41, 0.7)',
+        //             borderColor: '#2E5C29',
+        //             borderWidth: 1
+        //         }]
+        //     },
+        //     options: {
+        //         scales: {
+        //             y: {
+        //                 beginAtZero: true
+        //             }
+        //         }
+        //     }
+        // });
+
+        // Gráfico das plantas mais selecionadas para a horta
+
+
+
+        function obterDadosGrafico() {
+
+            fetch(`/medidas/ultimas/`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+
+                        plotarGrafico(resposta);
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+                .catch(function (error) {
+                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                });
+        }
+
+        var contadorAbobora = 0
+        var listaResultado = []
+
+        function plotarGrafico(resposta) {
+
+            console.log('iniciando plotagem do gráfico...');
+
+            // Criando estrutura para plotar gráfico - labels
+
+            // Criando estrutura para plotar gráfico - dados
+
+            if (teste) {
+                canva.destroy()
+            }
+
+            const ctx4 = document.getElementById('teste').getContext('2d');
+            var teste = new Chart(ctx4, {
+                type: 'bar',
+                data: {
+                    labels: ['Abobora', 'Alface', 'Batata', 'Cebola', 'Coentro', 'Alho', 'Tomate Cereja'],
+                    datasets: [{
+                        label: 'Plantas Mais Selecionadas para a Horta',
+                        data: listaResultado,
+                        backgroundColor: 'rgba(46, 92, 41, 0.7)',
+                        borderColor: '#2E5C29',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            console.log('----------------------------------------------')
+            console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+            console.log(resposta)
+
+            // Inserindo valores recebidos em estrutura para plotar o gráfico
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i].planta
+
+                if (registro.indexOf("Abóbora") != -1) {
+                    contadorAbobora++
+                }
+            }
+
+            listaResultado.push(contadorAbobora,)
+
+
+
+            console.log('----------------------------------------------')
+            console.log('O gráfico será plotado com os respectivos valores:')
+            console.log('Dados:')
+            console.log(resposta)
+            console.log('----------------------------------------------')
+
+            // Criando estrutura para plotar gráfico - config
+
+
+            // Adicionando gráfico criado em div na tela
+        }
+    </script>
+</body>
+
+</html>

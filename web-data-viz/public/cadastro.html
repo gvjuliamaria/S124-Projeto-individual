@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador</title>
+  <link rel="stylesheet" href="css/styleSimulador.css">
+
+</head>
+
+<body>
+
+  <!-- header Inicio -->
+  <div class="header">
+    <div class="logo">
+      <a href="C:\Users\julia\Desktop\Projeto-individual-S3\index.html"><img src="assets/imgs/logo.png"
+          alt="Logo do site"></a>
+    </div>
+    <div>
+      <ul>
+        <li><a href="index.html">Inicial</a></li>
+        <li><a href="chacaragouveia.html">Chácara Gouveia</a></li>
+        <li><a href="objetivoONU.html">Saúde e Bem-Estar</a></li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li> <a href="simulador.html">
+            <button>FAÇA A SIMULAÇÃO DE SUA HORTA</button></li></a>
+      </ul>
+    </div>
+  </div>
+  <!-- header Fim -->
+
+
+  <!-- formulário inicio -->
+  <div class="quadrado">
+    <div class="formulario">
+      <h1>Bem-vindo ao Simulador de Plantio e Colheita</h1>
+      <p>Este simulador permite que você planeje e simule o cultivo de diferentes plantas em sua própria horta.
+        Cultivar seus próprios alimentos não só é uma atividade gratificante, mas também uma maneira sustentável
+        de
+        se alimentar e cuidar do meio ambiente. Experimente e comece sua jornada na jardinagem hoje mesmo!</p>
+      <p>Antes de começar, por favor, nos informe um pouco sobre você:</p>
+      <div id="div_erros_login">
+        <span id="mensagem_erro"></span>
+      </div>
+    </div>
+    <div class="formulario">
+      <div class="card card-cadastro">
+        <div class="formularioUsuario">
+          Nome:<input type="text" id="nome_input">
+          Email:<input type=" email" id="email_input">
+          Idade:<input type="text" id="idade_input">
+
+          Qual é sua frequência de contato com a natureza?
+          <select id="select_contato_natureza">
+            <option value="#">Selecione uma opção</option>
+            <option value="diariamente">Diariamente</option>
+            <option value="semanalmente">Semanalmente</option>
+            <option value="mensalmete">Mensalmente</option>
+            <option value="raramente">Raramente</option>
+          </select>
+
+          Qual é o seu nível de estresse?
+          <select id="select_nivel_estresse">
+            <option value="#">Selecione uma opção</option>
+            <option value="baixo">Baixo</option>
+            <option value="medio">Médio</option>
+            <option value="alto">Alto</option>
+            <option value="muitoalto">Muito Alto</option>
+          </select>
+
+          Como você se sente quando está em áreas verdes?
+          <select id="select_sentimento">
+            <option value="#">Selecione uma opção</option>
+            <option value="muitobem">Muito Bem</option>
+            <option value="bem">Bem</option>
+            <option value="neutro">Neutro</option>
+            <option value="desconfortavel">Desconfortável</option>
+          </select>
+
+          <button class="botao" onclick="cadastrar()">Iniciar Simulação</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- formulário fim -->
+</body>
+
+</html>
+
+<script>
+  function cadastrar() {
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var idadeVar = idade_input.value;
+    var frequenciaContatoVar = select_contato_natureza.value;
+    var nivelEstresseVar = select_nivel_estresse.value;
+    var sentimentoVar = select_sentimento.value;
+
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      idadeVar == "" ||
+      frequenciaContatoVar == "" ||
+      nivelEstresseVar == "" ||
+      sentimentoVar == ""
+    ) {
+
+      alert("Preencha os Campos Corretamente!");
+
+      return false;
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        idadeServer: idadeVar,
+        frequenciaContatoServer: frequenciaContatoVar,
+        nivelEstresseServer: nivelEstresseVar,
+        sentimentoServer: sentimentoVar
+      }),
+    }).then(function (resposta) {
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+       
+        resposta.json().then(json => {
+          console.log("\n\n\n\n\nALEATÓRIO PARA VER A RESPOSTA");
+          console.log(json);
+          var idInserido = json.insertId;
+          console.log(idInserido);
+          // console.log(JSON.stringify(json));
+          sessionStorage.ID_USUARIO = idInserido;
+
+          // AQUI !!!!!!!!!!!!!!!!!!!
+          fetch("/simulacoes/cadastrar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              // crie um atributo que recebe o valor recuperado aqui
+              // Agora vá para o arquivo routes/simulacoes.js
+              idUsuarioServer: idInserido
+            }),
+          }).then().catch()
+
+        });
+
+        alert("Cadastro Realizado com Sucesso! Redirecionando para a tela de Simulação...")
+
+        setTimeout(() => {
+          window.location = "simulador.html";
+        }, "1000");
+
+        limparFormulario();
+      } else {
+        console.log(resposta);
+        // throw "Houve um erro ao tentar realizar o cadastro!";
+      }
+    }).catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+      return false;
+    });
+
+  }
+</script>

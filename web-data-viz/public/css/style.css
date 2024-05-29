@@ -1,0 +1,193 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Alef', sans-serif;
+    background-color: #F9F9F9;
+}
+
+
+
+/* -- ---- CSS HEADER ---- -- */
+.header {
+    background-color: #F9F9F9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 80px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.header button {
+    background-color: #FF8926;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 2px;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.header button:hover {
+    background-color: #FF6C00;
+}
+
+
+.logo img {
+    width: 200px;
+}
+
+.header ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.header li {
+    display: inline;
+    margin: 0 12px;
+}
+
+.header a {
+    text-decoration: none;
+    color: #2C2D2D;
+}
+
+.agora a {
+    color: #FF8926;
+    font-weight: bold;
+}
+
+
+/* -- ---- BANNER ---- -- */
+.banner {
+    height: var(--tamanho-banner);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+}
+
+/* PILARES PROJETO */
+.quadrado {
+    padding-top: 20px;
+    padding-bottom: 100px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.pilar {
+    width: 25%;
+    padding: 10px 30px;
+    text-align: justify;
+    background-color: #1D471A;
+    border-radius: 2px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pilar:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.pilar h2 {
+    color: #FFFFFF;
+    /* text-align: center; */
+}
+
+.pilar p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #FFFFFF;
+}
+
+.pilar button {
+    background-color: #FF8926;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 2px;
+    align-items: center;
+}
+
+.pilar button:hover {
+    background-color: #FF6C00;
+}
+
+.titulo-pilares {
+    padding-top: 50px;
+    text-align: center;
+    text-align: center;
+    font-size: 32px;
+    color: #FF8926;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+/* DEPOIMENTOS */
+.quadrado-depoimentos {
+    text-align: center;
+}
+
+.quadrado-depoimentos h2 {
+    font-size: 24px;
+    color: #2C2D2D;
+}
+
+.depoimento {
+    background-color: #f3f3f3;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.depoimento p {
+    font-size: 16px;
+    color: #2C2D2D;
+}
+
+.botao-depoimento {
+    background-color: #FF8926;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 18%;
+    margin-bottom: 70px;
+}
+
+.botao-depoimento:hover {
+    background-color: #FF6C00;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #1d1d1d;
+    color: #FFFFFF;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.footer h3 {
+    font-size: 24px;
+}
+
+.footer p {
+    font-size: 16px;
+}
+
+.footer a {
+    color: #FF8926;
+    text-decoration: none;
+}

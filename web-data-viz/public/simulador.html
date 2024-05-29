@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador</title>
+    <link rel="stylesheet" href="css/styleSimulador.css">
+
+</head>
+
+<body>
+    <!-- -- CABEÇALHO -- -->
+    <div class="header">
+        <div class="logo">
+            <a href="C:\Users\julia\Desktop\Projeto-individual-S3\index.html"><img src="assets/imgs/logo.png"
+                    alt="Logo do site"></a>
+        </div>
+        <div>
+            <ul>
+                <li><a href="index.html">Inicial</a></li>
+                <li><a href="chacaragouveia.html">Chácara Gouveia</a></li>
+                <li><a href="objetivoONU.html">Saúde e Bem-Estar</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li> <a href="metricas.html">
+                        <button>FAÇA A SIMULAÇÃO DE SUA HORTA</button></li></a>
+            </ul>
+        </div>
+    </div>
+
+    <!-- --SIMULADOR -- -->
+    <h1 class="titulo">Simulador de Plantio e Colheita</h1>
+
+    <div class="quadrado">
+
+        <div class="formulario">
+
+            <form class="formularioUsuario">
+                Escolha algo para plantar:
+                <select id="select_planta">
+                    <option value="#">Selecione uma hortaliça</option>
+                    <option value="Abóbora">Abóbora</option>
+                    <option value="Alface">Alface</option>
+                    <option value="Batata">Batata</option>
+                    <option value="Cebola">Cebola</option>
+                    <option value="Coentro">Coentro</option>
+                    <option value="Alho">Alho</option>
+                    <option value="Tomate Cereja">Tomate Cereja</option>
+                </select>
+
+                Tempo de Cultivo (em meses): <input type="number" id="input_tempo">
+                <button type="button" onclick="simular()">Simular</button>
+            </form>
+        </div>
+
+        <div class="formulario">
+            <div>
+                <h2>Resultado Simulação</h2>
+                <p id="p_resultado"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function simular() {
+
+            //Recupere o valor da nova input pelo nome do id
+            // Agora vá para o método fetch logo abaixo
+            var plantaVar = select_planta.value;
+            var tempoVar = input_tempo.value;
+
+            // var idUsuarioVar = sessionStorage.getItem("id");
+
+            if (plantaVar == "" || tempoVar == "") {
+                alert("Preencha os Campos Corretamente!");
+                return false;
+            }
+
+            // Enviando o valor da nova input
+            fetch("/simulacoes/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/simulacoes.js
+                    plantaServer: plantaVar,
+                    tempoServer: tempoVar,
+                    idUsuarioServer: sessionStorage.ID_USUARIO
+
+                }),
+            }).then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+                    var lista_hortalicas = ["Abóbora", "Alface", "Batata", "Cebola", "Coentro", "Alho", "Tomate Cereja"];
+                    var crescimento = 0;
+                    var taxaCrescimento = 0;
+
+                    var planta = select_planta.value;
+                    var tempo = input_tempo.value;
+
+                    if (tempo <= 0 || tempo > 12) {
+                        alert("Preencha o tempo corretamente!");
+                    } else {
+                        for (var index = 0; index < lista_hortalicas.length; index++) {
+                            if (planta === lista_hortalicas[index]) {
+
+                                if (planta === "Abóbora") {
+                                    taxaCrescimento = 10;
+                                } else if (planta === "Alface") {
+                                    taxaCrescimento = 5;
+                                } else if (planta === "Batata") {
+                                    taxaCrescimento = 8;
+                                } else if (planta === "Cebola") {
+                                    taxaCrescimento = 7;
+                                } else if (planta === "Coentro") {
+                                    taxaCrescimento = 10;
+                                } else if (planta === "Alho") {
+                                    taxaCrescimento = 5;
+                                } else if (planta === "Tomate Cereja") {
+                                    taxaCrescimento = 8;
+                                }
+
+                                crescimento = taxaCrescimento * tempo;
+
+                                p_resultado.innerHTML +=
+                                    `<p>A Hortaliça ${planta} foi simulada por um período de ${tempo} meses.</p>` +
+                                    `<p>Neste período, você terá terá lindas unidades por volta de ${crescimento} cm.</p>`;
+
+                                alert(`A Hortaliça ${planta} foi simulada por um período de ${tempo} meses. Neste período, você terá terá lindas unidades por volta de ${crescimento} cm`)
+
+                                break;
+                            }
+                        }
+                    }
+                } else {
+                    console.log(resposta);
+                    // throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                return false;
+            });
+
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
