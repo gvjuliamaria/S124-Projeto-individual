@@ -13,14 +13,6 @@ CREATE TABLE usuario (
   sentimento VARCHAR(45)
   );
   
-ALTER TABLE usuario ADD CONSTRAINT chkfrequenciaContato 
-CHECK (frequenciaContato IN('diariamente','semanalmente','mensalmente','raramente'));
-
-ALTER TABLE usuario ADD CONSTRAINT chknivelEstresse
-CHECK (nivelEstresse IN('baixo','medio','alto','muitoalto'));
-
-ALTER TABLE usuario ADD CONSTRAINT chksentimento 
-CHECK (sentimento IN('muitobem','bem','neutro','desconfortavel'));
 
 CREATE TABLE simulacao (
   idSimulacao INT AUTO_INCREMENT,
@@ -30,12 +22,6 @@ CREATE TABLE simulacao (
   PRIMARY KEY (idSimulacao, fkUsuario),
   CONSTRAINT fk_simulacao_usuario FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
   );
-  
-  INSERT INTO usuario VALUES 
-  (default, 'julia','ju@hot.com',12,'diariamente','baixo','muito bem');
-  
-  INSERT INTO simulacao VALUES
-  (default, );
 
 SELECT * FROM usuario;
 SELECT * FROM simulacao;

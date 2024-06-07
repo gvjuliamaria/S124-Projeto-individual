@@ -38,10 +38,12 @@
   <div class="quadrado">
     <div class="formulario">
       <h1>Bem-vindo ao Simulador de Plantio e Colheita</h1>
-      <p>Este simulador permite que você planeje e simule o cultivo de diferentes plantas em sua própria horta.
-        Cultivar seus próprios alimentos não só é uma atividade gratificante, mas também uma maneira sustentável
-        de
-        se alimentar e cuidar do meio ambiente. Experimente e comece sua jornada na jardinagem hoje mesmo!</p>
+      <p>Este simulador permite que você planeje e simule o cultivo de diferentes hortaliças
+        em sua própria horta em diferentes meses.</p>
+      <p>Cultivar seus próprios alimentos não só é uma atividade sustentável, mas também
+        uma maneira de ter mais contato com a terra e com a natureza proporcinando um sentimento gratificante
+        que pode transformar sua saúde e bem-estar.
+        Experimente e comece sua jornada na jardinagem hoje mesmo!</p>
       <p>Antes de começar, por favor, nos informe um pouco sobre você:</p>
       <div id="div_erros_login">
         <span id="mensagem_erro"></span>
@@ -138,7 +140,7 @@
       console.log("resposta: ", resposta);
 
       if (resposta.ok) {
-       
+
         resposta.json().then(json => {
           console.log("\n\n\n\n\nALEATÓRIO PARA VER A RESPOSTA");
           console.log(json);
