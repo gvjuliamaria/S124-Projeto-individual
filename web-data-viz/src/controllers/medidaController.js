@@ -1,11 +1,9 @@
 var medidaModel = require("../models/medidaModel");
 
-function buscarUltimasMedidas(req, res) {
+function buscarUltimasMedidasPlanta(req, res) {
+    console.log(`\n\n Recuperando as medidas das Plantas`);
 
-
-    console.log(`Recuperando as ultimas medidas`);
-
-    medidaModel.buscarUltimasMedidas().then(function (resultado) {
+    medidaModel.buscarUltimasMedidasPlanta().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -18,13 +16,42 @@ function buscarUltimasMedidas(req, res) {
     });
 }
 
+function buscarUltimasMedidasSentimento(req, res) {
+    console.log(`\n\n Recuperando as medidas dos Sentimentos`);
 
-function buscarMedidasEmTempoReal(req, res) {
+    medidaModel.buscarUltimasMedidasSentimento().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
+function buscarUltimasMedidasFrequencia(req, res) {
+    console.log(`\n\n Recuperando as medidas das Idades`);
 
-    console.log(`Recuperando medidas em tempo real`);
+    medidaModel.buscarUltimasMedidasFrequencia().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
-    medidaModel.buscarMedidasEmTempoReal(planta).then(function (resultado) {
+function buscarUltimasMedidasEstresse(req, res) {
+    console.log(`\n\n Recuperando as medidas dos Níveis de Estresses`);
+
+    medidaModel.buscarUltimasMedidasEstresse().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -38,7 +65,9 @@ function buscarMedidasEmTempoReal(req, res) {
 }
 
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarUltimasMedidasPlanta,
+    buscarUltimasMedidasSentimento,
+    buscarUltimasMedidasFrequencia,
+    buscarUltimasMedidasEstresse,
 
 }

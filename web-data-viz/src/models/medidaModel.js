@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas() {
+function buscarUltimasMedidasPlanta() {
 
     var instrucaoSql = ` SELECT planta FROM simulacao;`
 
@@ -8,22 +8,36 @@ function buscarUltimasMedidas() {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idSimulacao) {
+function buscarUltimasMedidasSentimento() {
+    var instrucaoSql = ` SELECT sentimento FROM usuario;`
 
-    var instrucaoSql = `SELECT count(planta) FROM simulacao
-    WHERE planta = 'abobora'
-    ORDER BY idSimulacao`;
-
-    var instrucaoSql2 = `SELECT count(planta) FROM simulacao
-    WHERE planta = 'alho'
-    ORDER BY idSimulacao`;
-
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql + instrucaoSql2);
-    return database.executar(instrucaoSql + instrucaoSql2);
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
 }
 
+function buscarUltimasMedidasFrequencia() {
+    var instrucaoSql = `SELECT frequenciaContato, nivelEstresse FROM usuario;`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarUltimasMedidasEstresse() {
+    var instrucaoSql = ` SELECT nivelEstresse, avg(idade) as media, count(nivelEstresse) as qtdUsuario FROM usuario
+GROUP BY nivelEstresse
+ORDER BY nivelEstresse;`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
+
+
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarUltimasMedidasPlanta,
+    buscarUltimasMedidasSentimento,
+    buscarUltimasMedidasFrequencia,
+    buscarUltimasMedidasEstresse
+
 }

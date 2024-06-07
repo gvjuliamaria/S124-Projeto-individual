@@ -51,7 +51,7 @@
                     <option value="Tomate Cereja">Tomate Cereja</option>
                 </select>
 
-                Tempo de Cultivo (em meses): <input type="number" id="input_tempo">
+                Tempo de Cultivo (em meses): <input id="input_tempo">
                 <button type="button" onclick="simular()">Simular</button>
             </form>
         </div>
@@ -68,91 +68,101 @@
 
         function simular() {
 
-            //Recupere o valor da nova input pelo nome do id
-            // Agora vá para o método fetch logo abaixo
-            var plantaVar = select_planta.value;
-            var tempoVar = input_tempo.value;
+            p_resultado.innerHTML = "";
 
+            var plantaVar = select_planta.value;
+            var tempoVar = Number(input_tempo.value)
             // var idUsuarioVar = sessionStorage.getItem("id");
 
             if (plantaVar == "" || tempoVar == "") {
-                alert("Preencha os Campos Corretamente!");
-                return false;
-            }
+                alert("Preencha os Campos Corretamente: Os campos não podem estar vazio.");
+            } else if (tempoVar < 1) {
+                alert("Preencha os Campos Corretamente: Insira um valor maior que zero.");
+            } else if (isNaN(tempoVar)) {
+                alert("Preencha os Campos Corretamente: Insira um valor numérico.");
 
-            // Enviando o valor da nova input
-            fetch("/simulacoes/cadastrar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/simulacoes.js
-                    plantaServer: plantaVar,
-                    tempoServer: tempoVar,
-                    idUsuarioServer: sessionStorage.ID_USUARIO
+            } else {
 
-                }),
-            }).then(function (resposta) {
-                console.log("resposta: ", resposta);
+                fetch("/simulacoes/cadastrar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        plantaServer: plantaVar,
+                        tempoServer: tempoVar,
+                        idUsuarioServer: sessionStorage.ID_USUARIO
 
-                if (resposta.ok) {
+                    }),
+                }).then(function (resposta) {
+                    console.log("resposta: ", resposta);
 
-                    var lista_hortalicas = ["Abóbora", "Alface", "Batata", "Cebola", "Coentro", "Alho", "Tomate Cereja"];
-                    var crescimento = 0;
-                    var taxaCrescimento = 0;
+                    if (resposta.ok) {
+                        // ["Abóbora", "Alface", "Batata", "Cebola", "Coentro", "Alho", "Tomate Cereja"];
+                        var planta = select_planta.value;
+                        var tempo = input_tempo.value;
+                        var crescimento = 0;
 
-                    var planta = select_planta.value;
-                    var tempo = input_tempo.value;
+                        if (planta == "Abóbora") {
+                            if (tempo == 1) {
+                                crescimento = 5 + Math.random() * 5; // 5-10 cm
+                                p_resultado.innerHTML += `  <p> Em ${tempo} mês, é improvável que a abóbora moranga tenha 
+                                                            uma fruta totalmente desenvolvida, mas ela estará bem estabelecida 
+                                                            com um sistema radicular robusto e várias folhas podendo ter 
+                                                            pequenos frutos de 5 até 10 cm de comprimento ou diâmetro. A fruta
+                                                            em si pode começar a se formar, mas não estará perto de seu tamanho 
+                                                            total ou de estar pronta para a colheita.
+                                                            <p> Para frutos maduros, você geralmente precisa esperar cerca 
+                                                            de 4 a 5 meses após o plantio.
+                                                            <p> <p>Em ${tempo} mês(es), a abóbora moranga pode atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro.</p>`
+                                                            ;
+                            } else if (tempo == 2) {
+                                p_resultado.innerHTML += `  <p> Em ${tempo} meses, é improvável que a abóbora moranga tenha 
+                                                            uma fruta totalmente desenvolvida, mas ela estará bem estabelecida 
+                                                            com um sistema radicular robusto e várias folhas. A fruta
+                                                            em si pode começar a se formar, mas não estará perto de seu tamanho 
+                                                            total ou de estar pronta para a colheita.
+                                                            <p> No final do segundo mês, a abóbora pode começar a formar 
+                                                            frutos que variam de 10 a 20 cm de diâmetro, dependendo das condições
+                                                            de cultivo.
+                                                            <p> Para frutos maduros, você geralmente precisa esperar cerca 
+                                                            de 4 a 5 meses após o plantio.`;
+                            } else if (tempo == 3) {
+                                p_resultado.innerHTML += `  <p> Em ${tempo} meses, a abóbora moranga estará bem estabelecida 
+                                                            com um sistema radicular robusto e várias folhas. Nesta fase, a planta 
+                                                            está focando em aumentar o tamanho do fruto e pode ainda não estar pronta 
+                                                            para a colheita.
+                                                            <p>A abóbora moranga pode atingir entre 20 e 40 cm de diâmetro. Nesta fase, 
+                                                            a abóbora está crescendo rapidamente e começa a se aproximar de sua maturidade.
+                                                            <p> Para frutos maduros, você geralmente precisa esperar cerca 
+                                                            de 4 a 5 meses após o plantio.`;
+                            } else if (tempo == 4) {
+                                p_resultado.innerHTML += `  <p> Em ${tempo} meses, a abóbora moranga pode estar totalmente madura e ter 
+                                                            atingido seu tamanho máximo, que pode variar entre 30 e 50 cm de diâmetro,
+                                                            dependendo da variedade e das condições.
+                                                            <p>A taxa de crescimento começa a diminuir à medida que a abóbora 
+                                                            atinge a maturidade.`;
+                            } else {
+                                p_resultado.innerHTML += `  <p> Se a abóbora não foi colhida no quarto mês, ela geralmente mantém seu 
+                                                            tamanho máximo de até 50 cm de diâmetro. No entanto, a qualidade pode 
+                                                            começar a diminuir se deixada muito tempo na planta.
+                                                            <p> O crescimento praticamente para, com a abóbora focando na maturação 
+                                                            completa e endurecimento da casca.`
 
-                    if (tempo <= 0 || tempo > 12) {
-                        alert("Preencha o tempo corretamente!");
-                    } else {
-                        for (var index = 0; index < lista_hortalicas.length; index++) {
-                            if (planta === lista_hortalicas[index]) {
-
-                                if (planta === "Abóbora") {
-                                    taxaCrescimento = 10;
-                                } else if (planta === "Alface") {
-                                    taxaCrescimento = 5;
-                                } else if (planta === "Batata") {
-                                    taxaCrescimento = 8;
-                                } else if (planta === "Cebola") {
-                                    taxaCrescimento = 7;
-                                } else if (planta === "Coentro") {
-                                    taxaCrescimento = 10;
-                                } else if (planta === "Alho") {
-                                    taxaCrescimento = 5;
-                                } else if (planta === "Tomate Cereja") {
-                                    taxaCrescimento = 8;
-                                }
-
-                                crescimento = taxaCrescimento * tempo;
-
-                                p_resultado.innerHTML +=
-                                    `<p>A Hortaliça ${planta} foi simulada por um período de ${tempo} meses.</p>` +
-                                    `<p>Neste período, você terá terá lindas unidades por volta de ${crescimento} cm.</p>`;
-
-                                alert(`A Hortaliça ${planta} foi simulada por um período de ${tempo} meses. Neste período, você terá terá lindas unidades por volta de ${crescimento} cm`)
-
-                                break;
                             }
+                        } else if(planta == "Alface"){
+
                         }
+                    } else {
+                        console.log(resposta);
                     }
-                } else {
-                    console.log(resposta);
-                    // throw "Houve um erro ao tentar realizar o cadastro!";
-                }
-            }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                return false;
-            });
+                }).catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    return false;
+                });
 
+            }
         }
-
-
-
     </script>
 
 </body>
