@@ -18,6 +18,11 @@ body {
 
 }
 
+.header .buttons-container {
+    display: flex;
+    gap: 10px;
+}
+
 .header button {
     background-color: #FF8926;
     color: #FFFFFF;
@@ -28,6 +33,17 @@ body {
     align-items: center;
     font-weight: bold;
     font-size: 14px;
+}
+
+.header .buttonmetricas {
+    background-color: transparent;
+    color: #FF8926;
+    border: 2px solid #FF8926;
+}
+
+.header .buttonmetricas:hover {
+    background-color: #FF8926;
+    color: #FFFFFF;
 }
 
 .header button:hover {

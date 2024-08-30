@@ -23,11 +23,13 @@
                 <li><a href="objetivoONU.html">Saúde e Bem-Estar</a></li>
             </ul>
         </div>
-        <div>
-            <ul>
-                <li> <a href="metricas.html">
-                        <button>FAÇA A SIMULAÇÃO DE SUA HORTA</button></li></a>
-            </ul>
+        <div class="buttons-container">
+            <a href="cadastro.html">
+                <button class="buttonhorta">FAÇA A SIMULAÇÃO DE SUA HORTA</button>
+            </a>
+            <a href="metricas.html">
+                <button class="buttonmetricas">Vizualize as métricas</button>
+            </a>
         </div>
     </div>
 
@@ -103,55 +105,155 @@
                         var tempo = input_tempo.value;
                         var crescimento = 0;
 
-                        if (planta == "Abóbora") {
+                        if (planta === "Abóbora") {
+                            if (tempo == 1) {
+                                crescimento = 5 + Math.random() * 5;
+                                p_resultado.innerHTML += `<p>Em ${tempo} mês, é improvável que a abóbora moranga tenha uma fruta totalmente desenvolvida, mas ela estará bem estabelecida com um sistema radicular robusto e várias folhas podendo ter pequenos frutos de 5 até 10 cm de comprimento ou diâmetro.</p>`;
+                                p_resultado.innerHTML += `<p>Para frutos maduros, você geralmente precisa esperar cerca de 4 a 5 meses após o plantio. Durante este período, a abóbora focará em aumentar o tamanho do fruto e desenvolver a casca e a polpa.</p>`;
+                                p_resultado.innerHTML += `<p>Em ${tempo} mês(es), a abóbora moranga pode atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro.</p>`;
+                            } else if (tempo == 2) {
+                                crescimento = 10 + Math.random() * 10;
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, é improvável que a abóbora moranga tenha uma fruta totalmente desenvolvida, mas ela estará bem estabelecida com um sistema radicular robusto e várias folhas.</p>`;
+                                p_resultado.innerHTML += `<p>No final do segundo mês, a abóbora pode começar a formar frutos que variam de 10 a 20 cm de diâmetro, dependendo das condições de cultivo.</p>`;
+                                p_resultado.innerHTML += `<p>Para frutos maduros, você geralmente precisa esperar cerca de 4 a 5 meses após o plantio.</p>`;
+                                p_resultado.innerHTML += `<p>Em ${tempo} mês(es), a abóbora moranga pode atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro.</p>`;
+                            } else if (tempo == 3) {
+                                crescimento = 20 + Math.random() * 20;
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, a abóbora moranga estará bem estabelecida com um sistema radicular robusto e várias folhas. Nesta fase, a planta está focando em aumentar o tamanho do fruto e pode ainda não estar pronta para a colheita.</p>`;
+                                p_resultado.innerHTML += `<p>A abóbora moranga pode atingir entre 20 e 40 cm de diâmetro. Nesta fase, a abóbora está crescendo rapidamente e começa a se aproximar de sua maturidade.</p>`;
+                                p_resultado.innerHTML += `<p>Para frutos maduros, você geralmente precisa esperar cerca de 4 a 5 meses após o plantio.</p>`;
+                                p_resultado.innerHTML += `<p>Em ${tempo} mês(es), a abóbora moranga pode atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro.</p>`;
+                            } else if (tempo == 4) {
+                                crescimento = 30 + Math.random() * 20;
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, a abóbora moranga pode estar totalmente madura e ter atingido seu tamanho máximo, que pode variar entre 30 e 50 cm de diâmetro, dependendo da variedade e das condições.</p>`;
+                                p_resultado.innerHTML += `<p>A taxa de crescimento começa a diminuir à medida que a abóbora atinge a maturidade.</p>`;
+                                p_resultado.innerHTML += `<p>Em ${tempo} mês(es), a abóbora moranga pode atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro.</p>`;
+                            } else {
+                                crescimento = 30 + Math.random() * 20;
+                                p_resultado.innerHTML += `<p>Se a abóbora não foi colhida no quarto mês, ela geralmente mantém seu tamanho máximo de até 50 cm de diâmetro. No entanto, a qualidade pode começar a diminuir se deixada muito tempo na planta.</p>`;
+                                p_resultado.innerHTML += `<p>O crescimento praticamente para, com a abóbora focando na maturação completa e endurecimento da casca.</p>`;
+                                p_resultado.innerHTML += `<p>Em ${tempo} mês(es), a abóbora moranga pode atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro.</p>`;
+                            }
+                        } else if (planta === "Alface") {
+                            if (tempo == 1) {
+                                crescimento = 10 + Math.random() * 10; // 10-20 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} mês, a alface pode atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro. A alface estará bem estabelecida e começará a formar uma cabeça.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, a alface geralmente precisa de 1 a 2 meses após o plantio. Durante este período, ela continuará a desenvolver suas folhas até atingir o tamanho completo.</p>`;
+                            } else if (tempo == 2) {
+                                crescimento = 20 + Math.random() * 10; // 20-30 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, a alface pode atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro. A alface estará totalmente crescida e pronta para a colheita.</p>`;
+                                p_resultado.innerHTML += `<p>É ideal colher a alface antes que ela comece a florir, pois isso pode afetar o sabor e a textura das folhas.</p>`;
+                            } else {
+                                crescimento = 20 + Math.random() * 10; // 20-30 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, a alface pode atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro. A alface está totalmente crescida e pronta para a colheita, mas se deixada por muito tempo, pode começar a deteriorar.</p>`;
+                                p_resultado.innerHTML += `<p>Recomenda-se colher a alface dentro de 2 meses após o plantio para obter o melhor sabor e textura.</p>`;
+                            }
+                        } else if (planta === "Batata") {
+                            if (tempo == 1) {
+                                p_resultado.innerHTML += `<p>Em ${tempo} mês, a batata está desenvolvendo seu sistema radicular e folhagem. Os tubérculos ainda não começaram a se formar.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, a batata geralmente precisa de 3 a 4 meses após o plantio. Durante este período, os tubérculos começarão a se desenvolver e crescerão até atingir seu tamanho completo.</p>`;
+                            } else if (tempo == 2) {
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, a batata está desenvolvendo seu sistema radicular e folhagem. Os tubérculos estão começando a se formar, mas ainda são pequenos.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, a batata geralmente precisa de 3 a 4 meses após o plantio.</p>`;
+                            } else if (tempo == 3) {
+                                crescimento = 5 + Math.random() * 5; // 5-10 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, os tubérculos da batata podem atingir aproximadamente ${crescimento.toFixed(2)} cm de comprimento. A planta está próxima de atingir a maturidade.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, a batata geralmente precisa de 3 a 4 meses após o plantio.</p>`;
+                            } else if (tempo == 4) {
+                                crescimento = 5 + Math.random() * 5; // 5-10 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, os tubérculos da batata podem atingir aproximadamente ${crescimento.toFixed(2)} cm de comprimento. A batata está totalmente madura e pronta para a colheita.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, a batata deve ser colhida entre 3 a 4 meses após o plantio, antes que os tubérculos comecem a deteriorar.</p>`;
+                            } else {
+                                crescimento = 5 + Math.random() * 5; // 5-10 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, os tubérculos da batata podem atingir aproximadamente ${crescimento.toFixed(2)} cm de comprimento. A batata está totalmente madura e pronta para a colheita, mas se deixada por muito tempo, pode começar a deteriorar.</p>`;
+                                p_resultado.innerHTML += `<p>Para a melhor qualidade, colha a batata dentro de 4 meses após o plantio.</p>`;
+                            }
+                        } else if (planta === "Cebola") {
+                            if (tempo == 1) {
+                                p_resultado.innerHTML += `<p>Em ${tempo} mês, a cebola está desenvolvendo seu sistema radicular e folhagem. Os bulbos ainda não começaram a se formar.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, a cebola geralmente precisa de 5 a 6 meses após o plantio. Durante este período, os bulbos começarão a se desenvolver e crescerão até atingir seu tamanho completo.</p>`;
+                            } else if (tempo == 2) {
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, a cebola está desenvolvendo seu sistema radicular e folhagem. Os bulbos estão começando a se formar, mas ainda são pequenos.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, a cebola geralmente precisa de 5 a 6 meses após o plantio.</p>`;
+                            } else if (tempo == 3) {
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, a cebola está desenvolvendo seu sistema radicular e folhagem. Os bulbos estão começando a se formar, mas ainda são pequenos.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, a cebola geralmente precisa de 5 a 6 meses após o plantio.</p>`;
+                            } else if (tempo == 4) {
+                                crescimento = 5 + Math.random() * 5; // 5-10 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, os bulbos da cebola podem atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro. A cebola está próxima de atingir a maturidade.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, a cebola geralmente precisa de 5 a 6 meses após o plantio.</p>`;
+                            } else if (tempo == 5) {
+                                crescimento = 5 + Math.random() * 5; // 5-10 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, os bulbos da cebola podem atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro. A cebola está totalmente madura e pronta para a colheita.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, a cebola deve ser colhida entre 5 a 6 meses após o plantio, antes que os bulbos comecem a deteriorar.</p>`;
+                            } else {
+                                crescimento = 5 + Math.random() * 5; // 5-10 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, os bulbos da cebola podem atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro. A cebola está totalmente madura e pronta para a colheita, mas se deixada por muito tempo, pode começar a deteriorar.</p>`;
+                                p_resultado.innerHTML += `<p>Para a melhor qualidade, colha a cebola dentro de 6 meses após o plantio.</p>`;
+                            }
+                        } else if (planta === "Coentro") {
+                            if (tempo == 1) {
+                                crescimento = 15 + Math.random() * 10; // 15-25 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} mês, o coentro pode atingir aproximadamente ${crescimento.toFixed(2)} cm de altura. O coentro estará bem estabelecido e começará a formar folhas.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, o coentro geralmente precisa de 1 a 2 meses após o plantio. Durante este período, ele continuará a desenvolver suas folhas até atingir o tamanho completo.</p>`;
+                            } else if (tempo == 2) {
+                                crescimento = 30 + Math.random() * 20; // 30-50 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, o coentro pode atingir aproximadamente ${crescimento.toFixed(2)} cm de altura. O coentro estará totalmente crescido e pronto para a colheita.</p>`;
+                                p_resultado.innerHTML += `<p>É ideal colher o coentro antes que ele comece a florir, pois isso pode afetar o sabor e a textura das folhas. Normalmente, o coentro é colhido dentro de 2 meses após o plantio para obter o melhor sabor.</p>`;
+                            } else {
+                                crescimento = 30 + Math.random() * 20; // 30-50 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, o coentro pode atingir aproximadamente ${crescimento.toFixed(2)} cm de altura. O coentro estará totalmente crescido e pronto para a colheita, mas se deixado por muito tempo, pode começar a deteriorar e florir, perdendo assim o sabor ideal.</p>`;
+                                p_resultado.innerHTML += `<p>Para a melhor qualidade, colha o coentro dentro de 2 meses após o plantio.</p>`;
+                            }
+
+                        } else if (planta === "Alho") {
+                            if (tempo == 1) {
+                                p_resultado.innerHTML += `<p>Em ${tempo} mês, o alho estará desenvolvendo seu sistema radicular e folhagem. Os bulbos ainda não começaram a se formar.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, o alho geralmente precisa de 6 a 8 meses após o plantio. Durante este período, os bulbos começarão a se desenvolver e crescerão até atingir seu tamanho completo.</p>`;
+                            } else if (tempo == 2) {
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, o alho estará desenvolvendo seu sistema radicular e folhagem. Os bulbos ainda estão pequenos e em desenvolvimento.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, o alho geralmente precisa de 6 a 8 meses após o plantio.</p>`;
+                            } else if (tempo == 3) {
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, o alho estará desenvolvendo seu sistema radicular e folhagem. Os bulbos estão começando a se formar, mas ainda são pequenos.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, o alho geralmente precisa de 6 a 8 meses após o plantio.</p>`;
+                            } else if (tempo == 4) {
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, o alho estará desenvolvendo seu sistema radicular e folhagem. Os bulbos ainda estão em desenvolvimento, mas começam a se aproximar do tamanho completo.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, o alho geralmente precisa de 6 a 8 meses após o plantio.</p>`;
+                            } else if (tempo == 5) {
+                                crescimento = 2 + Math.random() * 3; // 2-5 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, os bulbos do alho podem atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro. O alho está próximo de atingir a maturidade.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, o alho geralmente precisa de 6 a 8 meses após o plantio.</p>`;
+                            } else if (tempo == 6) {
+                                crescimento = 2 + Math.random() * 3; // 2-5 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, os bulbos do alho podem atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro. O alho está totalmente maduro e pronto para a colheita.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, o alho deve ser colhido entre 6 a 8 meses após o plantio, antes que os bulbos comecem a deteriorar.</p>`;
+                            } else {
+                                crescimento = 2 + Math.random() * 3; // 2-5 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, os bulbos do alho podem atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro. O alho está totalmente maduro e pronto para a colheita, mas se deixado por muito tempo, pode começar a deteriorar.</p>`;
+                                p_resultado.innerHTML += `<p>Para a melhor qualidade, colha o alho dentro de 8 meses após o plantio.</p>`;
+                            }
+                        } else if (planta === "Tomate Cereja") {
                             if (tempo == 1) {
                                 crescimento = 5 + Math.random() * 5; // 5-10 cm
-                                p_resultado.innerHTML += `  <p> Em ${tempo} mês, é improvável que a abóbora moranga tenha 
-                                                            uma fruta totalmente desenvolvida, mas ela estará bem estabelecida 
-                                                            com um sistema radicular robusto e várias folhas podendo ter 
-                                                            pequenos frutos de 5 até 10 cm de comprimento ou diâmetro. A fruta
-                                                            em si pode começar a se formar, mas não estará perto de seu tamanho 
-                                                            total ou de estar pronta para a colheita.
-                                                            <p> Para frutos maduros, você geralmente precisa esperar cerca 
-                                                            de 4 a 5 meses após o plantio.
-                                                            <p> <p>Em ${tempo} mês(es), a abóbora moranga pode atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro.</p>`
-                                                            ;
+                                p_resultado.innerHTML += `<p>Em ${tempo} mês, o tomate cereja estará começando a desenvolver seu sistema radicular e folhagem. Os frutos ainda não começaram a se formar.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, o tomate cereja geralmente precisa de 2 a 3 meses após o plantio. Durante este período, a planta começará a florescer e a formar frutos.</p>`;
                             } else if (tempo == 2) {
-                                p_resultado.innerHTML += `  <p> Em ${tempo} meses, é improvável que a abóbora moranga tenha 
-                                                            uma fruta totalmente desenvolvida, mas ela estará bem estabelecida 
-                                                            com um sistema radicular robusto e várias folhas. A fruta
-                                                            em si pode começar a se formar, mas não estará perto de seu tamanho 
-                                                            total ou de estar pronta para a colheita.
-                                                            <p> No final do segundo mês, a abóbora pode começar a formar 
-                                                            frutos que variam de 10 a 20 cm de diâmetro, dependendo das condições
-                                                            de cultivo.
-                                                            <p> Para frutos maduros, você geralmente precisa esperar cerca 
-                                                            de 4 a 5 meses após o plantio.`;
+                                crescimento = 10 + Math.random() * 10; // 10-20 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, o tomate cereja estará desenvolvendo seu sistema radicular e folhagem. Os frutos estão começando a se formar e podem atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, o tomate cereja geralmente precisa de 2 a 3 meses após o plantio.</p>`;
                             } else if (tempo == 3) {
-                                p_resultado.innerHTML += `  <p> Em ${tempo} meses, a abóbora moranga estará bem estabelecida 
-                                                            com um sistema radicular robusto e várias folhas. Nesta fase, a planta 
-                                                            está focando em aumentar o tamanho do fruto e pode ainda não estar pronta 
-                                                            para a colheita.
-                                                            <p>A abóbora moranga pode atingir entre 20 e 40 cm de diâmetro. Nesta fase, 
-                                                            a abóbora está crescendo rapidamente e começa a se aproximar de sua maturidade.
-                                                            <p> Para frutos maduros, você geralmente precisa esperar cerca 
-                                                            de 4 a 5 meses após o plantio.`;
+                                crescimento = 20 + Math.random() * 10; // 20-30 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, o tomate cereja estará bem estabelecido e começará a produzir frutos maduros. Os frutos podem atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, colha os tomates cereja regularmente para promover a produção contínua de frutos.</p>`;
                             } else if (tempo == 4) {
-                                p_resultado.innerHTML += `  <p> Em ${tempo} meses, a abóbora moranga pode estar totalmente madura e ter 
-                                                            atingido seu tamanho máximo, que pode variar entre 30 e 50 cm de diâmetro,
-                                                            dependendo da variedade e das condições.
-                                                            <p>A taxa de crescimento começa a diminuir à medida que a abóbora 
-                                                            atinge a maturidade.`;
+                                crescimento = 20 + Math.random() * 10; // 20-30 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, o tomate cereja estará em plena produção, com frutos maduros prontos para a colheita. Os frutos podem atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro.</p>`;
+                                p_resultado.innerHTML += `<p>Para uma colheita ideal, continue colhendo os tomates cereja regularmente para promover a produção contínua de frutos.</p>`;
                             } else {
-                                p_resultado.innerHTML += `  <p> Se a abóbora não foi colhida no quarto mês, ela geralmente mantém seu 
-                                                            tamanho máximo de até 50 cm de diâmetro. No entanto, a qualidade pode 
-                                                            começar a diminuir se deixada muito tempo na planta.
-                                                            <p> O crescimento praticamente para, com a abóbora focando na maturação 
-                                                            completa e endurecimento da casca.`
-
+                                crescimento = 20 + Math.random() * 10; // 20-30 cm
+                                p_resultado.innerHTML += `<p>Em ${tempo} meses, o tomate cereja estará em plena produção e pode manter a produção contínua de frutos maduros. Os frutos podem atingir aproximadamente ${crescimento.toFixed(2)} cm de diâmetro.</p>`;
+                                p_resultado.innerHTML += `<p>Para a melhor qualidade, colha os tomates cereja regularmente e forneça suporte adequado para a planta.</p>`;
                             }
-                        } else if(planta == "Alface"){
-
                         }
                     } else {
                         console.log(resposta);

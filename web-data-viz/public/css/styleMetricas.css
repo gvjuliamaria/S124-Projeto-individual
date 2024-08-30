@@ -12,6 +12,7 @@ body {
     padding: 10px 20px;
     height: 80px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 
 }
 
@@ -48,6 +49,8 @@ body {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    align-items: center;
+    
 }
 
 .chart {
@@ -66,4 +69,48 @@ canvas {
 
 canvas:hover{
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.buttonParticipar {
+    text-align: center;
+    margin: 20px;
+}
+
+.buttonParticipar button {
+    background-color: #FF6C00;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 2px;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.buttonParticipar button:hover {
+    background-color: #FF8926;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #1d1d1d;
+    color: #FFFFFF;
+    padding: 50px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.footer h3 {
+    font-size: 24px;
+}
+
+.footer p {
+    font-size: 16px;
+}
+
+.footer a {
+    color: #FF8926;
+    text-decoration: none;
 }

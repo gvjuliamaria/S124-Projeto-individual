@@ -29,6 +29,14 @@
     </div>
 
     <div class="container">
+        <div style="background-color:beige; width: 88%; border-radius: 8px;">
+            <div class="buttonParticipar">
+                <a href="cadastro.html"><button>CONTRIBUA COM OS SEUS DADOS!</button></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
         <!-- Gráfico das plantas mais selecionadas para a horta -->
         <div class="chart">
             <canvas id="plantaChart"></canvas>
@@ -51,6 +59,17 @@
             <canvas id="nivelEstresseChart"></canvas>
         </div>
     </div>
+
+     <!-- -- FOOTER -- -->
+     <footer class="footer">
+        <div>
+            <h3>Projeto Individual</h3>
+            <p>Feito por JULIA MARIA GOUVEIA DE ALMEIDA</p>
+            <p>Turma: 1° Sistemas de Informação - Ano: 2024</p>
+            <p>Faculdade: São Paulo Tech School</p>
+            <p> <a href="https://github.com/gvjuliamaria/Projeto-individual-S3">Acesse o meu Git Hub</a></p>
+        </div>
+    </footer>
 
 
 
@@ -253,6 +272,8 @@
         // --------------------------------------------------------------------
         // ARÉA PARA O GRÁFICO DE: Frequencia de Contato
         // --------------------------------------------------------------------
+
+        
         function obterDadosGraficoFrequencia() {
             fetch(`/medidas/ultimasFrequencia/`, { cache: 'no-store' }).then(function (response) {
                 if (response.ok) {
@@ -419,11 +440,6 @@
                 });
         }
 
-        var contadorBaixo = 0
-        var contadorMedio = 0;
-        var contadorMuitoAlto = 0;
-        var contadorMuitoAlto = 0;
-
         var listaEstresse = [];
         var listaMedia = [];
 
@@ -462,7 +478,7 @@
                 options: {
                     layout: {
                         padding: {
-                            top: 40 // Ajuste a margem superior para criar espaço para o título
+                            top: 40 
                         }
                     },
                     plugins: {

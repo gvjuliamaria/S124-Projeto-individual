@@ -16,6 +16,11 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.header .buttons-container {
+    display: flex;
+    gap: 10px;
+}
+
 .header button {
     background-color: #FF8926;
     color: #FFFFFF;
@@ -26,6 +31,17 @@ body {
     align-items: center;
     font-weight: bold;
     font-size: 14px;
+}
+
+.header .buttonmetricas {
+    background-color: transparent;
+    color: #FF8926;
+    border: 2px solid #FF8926;
+}
+
+.header .buttonmetricas:hover {
+    background-color: #FF8926;
+    color: #FFFFFF;
 }
 
 .header button:hover {
@@ -98,4 +114,25 @@ body {
     max-width: 800px;
     margin: 20px auto;
     padding: 0 20px;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #1d1d1d;
+    color: #FFFFFF;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.footer h3 {
+    font-size: 24px;
+}
+
+.footer p {
+    font-size: 16px;
+}
+
+.footer a {
+    color: #FF8926;
+    text-decoration: none;
 }

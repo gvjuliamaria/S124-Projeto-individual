@@ -30,8 +30,7 @@ function cadastrar(req, res) {
     var nivelEstresse = req.body.nivelEstresseServer;
     var sentimento = req.body.sentimentoServer;
 
-
-    // Faça as validações dos valores
+    // Validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
     } else if (email == undefined) {

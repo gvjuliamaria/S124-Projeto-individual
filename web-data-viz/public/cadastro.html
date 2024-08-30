@@ -24,11 +24,13 @@
         <li><a href="objetivoONU.html">Saúde e Bem-Estar</a></li>
       </ul>
     </div>
-    <div>
-      <ul>
-        <li> <a href="simulador.html">
-            <button>FAÇA A SIMULAÇÃO DE SUA HORTA</button></li></a>
-      </ul>
+    <div class="buttons-container">
+      <a href="cadastro.html">
+        <button class="buttonhorta">FAÇA A SIMULAÇÃO DE SUA HORTA</button>
+      </a>
+      <a href="metricas.html">
+        <button class="buttonmetricas">Vizualize as métricas</button>
+      </a>
     </div>
   </div>
   <!-- header Fim -->
@@ -95,10 +97,9 @@
 </html>
 
 <script>
+
   function cadastrar() {
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var idadeVar = idade_input.value;
@@ -120,15 +121,12 @@
       return false;
     }
 
-    // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
         idadeServer: idadeVar,
@@ -141,28 +139,26 @@
 
       if (resposta.ok) {
 
-        resposta.json().then(json => {
-          console.log("\n\n\n\n\nALEATÓRIO PARA VER A RESPOSTA");
-          console.log(json);
-          var idInserido = json.insertId;
-          console.log(idInserido);
-          // console.log(JSON.stringify(json));
-          sessionStorage.ID_USUARIO = idInserido;
+        resposta.json()
+          .then(json => {
+            console.log("\n\n\n\n\nALEATÓRIO PARA VER A RESPOSTA");
+            console.log(json);
+            var idInserido = json.insertId;
+            console.log(idInserido);
 
-          // AQUI !!!!!!!!!!!!!!!!!!!
-          fetch("/simulacoes/cadastrar", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              // crie um atributo que recebe o valor recuperado aqui
-              // Agora vá para o arquivo routes/simulacoes.js
-              idUsuarioServer: idInserido
-            }),
-          }).then().catch()
+            sessionStorage.ID_USUARIO = idInserido;
 
-        });
+            fetch("/simulacoes/cadastrar", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                idUsuarioServer: idInserido
+              }),
+            }).then().catch()
+
+          });
 
         alert("Cadastro Realizado com Sucesso! Redirecionando para a tela de Simulação...")
 

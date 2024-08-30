@@ -24,6 +24,10 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
 }
+.header .buttons-container {
+    display: flex;
+    gap: 10px;
+}
 
 .header button {
     background-color: #FF8926;
@@ -37,10 +41,20 @@ body {
     font-size: 14px;
 }
 
+.header .buttonmetricas {
+    background-color: transparent;
+    color: #FF8926;
+    border: 2px solid #FF8926;
+}
+
+.header .buttonmetricas:hover {
+    background-color: #FF8926;
+    color: #FFFFFF;
+}
+
 .header button:hover {
     background-color: #FF6C00;
 }
-
 
 .logo img {
     width: 200px;
